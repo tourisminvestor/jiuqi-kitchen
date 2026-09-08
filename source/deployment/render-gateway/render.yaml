@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: jiuqi-kitchen
+    runtime: node
+    rootDir: deployment/render-gateway
+    region: singapore
+    plan: free
+    buildCommand: npm run check
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: 22

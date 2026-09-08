@@ -1,0 +1,1 @@
+{"version":2,"builds":[{"src":"api/gateway.mjs","use":"@vercel/node"}],"routes":[{"src":"/(.*)","dest":"/api/gateway.mjs?__route=$1"}]}

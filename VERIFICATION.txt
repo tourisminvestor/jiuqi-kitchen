@@ -1,0 +1,3 @@
+Existing application tests: 10 passed, 0 failed.
+Standalone wrangler deploy --dry-run: passed; 63 static asset files; DB/BUCKET/IMAGES/ASSETS bindings recognized.
+No remote deployment performed. Production data not exported.
