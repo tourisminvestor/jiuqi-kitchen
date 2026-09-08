@@ -15589,10 +15589,7 @@ function Kitchen({ user: initialUser }) {
 		setAuthOpen(true);
 	}
 	function startCommunity() {
-		if (!user) {
-			toast("先登記一個帳戶，就可以分享你嘅拿手菜。");
-			requireStudioLogin();
-		} else setStudio(true);
+		setStudio(true);
 	}
 	function openRecipe(r) {
 		setSelected(r);

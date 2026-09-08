@@ -11669,7 +11669,7 @@ var client_references_default = {
 		};
 	},
 	"f4689b0fe6fb": async () => {
-		const m = await import("./assets/kitchen-BndnggKI.js");
+		const m = await import("./assets/kitchen-BsQvfUkK.js");
 		return { get "default"() {
 			return m["default"];
 		} };

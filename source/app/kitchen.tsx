@@ -22,7 +22,7 @@ export default function Kitchen({user:initialUser}:{user:KitchenUser|null}){
  async function refreshFavorites(){try{const r=await fetch('/api/favorites');const d=await r.json() as {error?:string;favorites:string[]};if(!r.ok)throw new Error(d.error);setSaved(d.favorites)}catch(e){toast.error(e instanceof Error?e.message:'暫時載入唔到收藏。')}}
  useEffect(()=>{refresh();refreshFavorites()},[]);
  function requireStudioLogin(){setResumeStudio(true);setStudio(false);setAuthOpen(true)}
- function startCommunity(){if(!user){toast('先登記一個帳戶，就可以分享你嘅拿手菜。');requireStudioLogin()}else setStudio(true)}
+ function startCommunity(){setStudio(true)}
  function openRecipe(r:Recipe){setSelected(r);setCompleted([])}
  async function favorite(item:string){if(!user){setAuthOpen(true);return}if(saveBusy.includes(item))return;setSaveBusy(v=>[...v,item]);try{const next=!saved.includes(item);const r=await fetch('/api/favorites',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({item,saved:next})});const d=await r.json() as {error?:string};if(!r.ok)throw new Error(d.error);setSaved(v=>next?[...v,item]:v.filter(x=>x!==item));toast.success(next?'已收藏，下次煮返呢味！':'已取消收藏');}catch(e){toast.error(e instanceof Error?e.message:'儲存唔到，請再試。')}finally{setSaveBusy(v=>v.filter(x=>x!==item))}}
  async function logout(){if(user?.source==='platform'){window.location.href='/signout-with-chatgpt?return_to=/';return}try{const r=await fetch('/api/auth/logout',{method:'POST'});if(!r.ok)throw new Error();setUser(null);setSaved([]);refresh();toast.success('已登出帳戶。')}catch{toast.error('暫時登出唔到，請再試一次。')}}
