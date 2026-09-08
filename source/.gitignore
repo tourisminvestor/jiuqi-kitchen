@@ -35,7 +35,7 @@ yarn-error.log*
 
 # typescript
 next-env.d.ts
-/dist/
+# /dist/ 已改为入库：Cloudflare Workers Builds 直接部署仓库内构建产物
 /.wrangler/
 /.sites-runtime/
 /outputs/
